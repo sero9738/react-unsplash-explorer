@@ -1,0 +1,11 @@
+.btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    background-color: aliceblue;
+}
+
+.btn:hover{
+    background-color: rgb(235, 243, 250);
+}

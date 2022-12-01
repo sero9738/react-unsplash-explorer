@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Header from "./components/Header/Header";
+import ContentBoard from "./components/ContentBoard/ContentBoard";
+import LatestView from "./components/LatestView/LatestView";
+import PopularView from "./components/PopularView/PopularView";
+
+enum Route {
+  LATEST = "LATEST",
+  POPULAR = "POPULAR",
+}
 
 function App() {
+  const [route, setRoute] = useState(Route.LATEST);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header currentRoute={route} setRouteCallback={setRoute}></Header>
+      <ContentBoard>
+        {route === Route.LATEST ? (<LatestView></LatestView>) : <PopularView></PopularView>}
+      </ContentBoard>
     </div>
   );
 }
